@@ -1,0 +1,53 @@
+
+body {
+    background-color: #134B70; 
+}
+
+
+.table {
+    margin-top:50px;
+    width: 100%; 
+    border-collapse: collapse; 
+    
+}
+
+    
+    .table th {
+        background-color: #201E43; 
+        color: white; 
+        padding: 10px; 
+        text-align: left; 
+    }
+
+    
+    .table td {
+        background-color: #EEEEEE; 
+        color: #201E43; 
+        padding: 10px; 
+    }
+
+
+.btn {
+    padding: 5px 10px; 
+    border-radius: 3px;
+    color: white;
+    border: none; 
+    cursor: pointer; 
+}
+
+.btn-warning {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #007bff;
+}
+
+
+.alert-success {
+    background-color: green; 
+    color: white; 
+}
+footer{
+    display:none;
+}

@@ -1,0 +1,40 @@
+﻿@model WebApp.Models.Admin
+<link rel="stylesheet" href="~/css/creating.css" />
+<div class="form-container">
+    <form asp-action="CreateAdmin" method="post" class="needs-validation" novalidate>
+        <h1>Create New Admin</h1>
+
+        <div class="form-group mb-3">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Admin Name" required />
+            <div class="invalid-feedback">
+                Please provide a name.
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Admin Email" required />
+            <div class="invalid-feedback">
+                Please provide a valid email.
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Admin Password" required />
+            <div class="invalid-feedback">
+                Please provide a password.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+

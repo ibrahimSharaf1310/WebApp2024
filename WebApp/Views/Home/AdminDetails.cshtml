@@ -1,0 +1,126 @@
+﻿@model ICollection<WebApp.Models.Admin>
+@{
+    Layout = "~/Views/Shared/_NoHeaderLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Welcome in Admin Details </h2>
+
+        <!-- Buttons to toggle between Admin and User login -->
+        <div class="d-flex justify-content-center mt-4">
+            <button id="adminBtn" class="btn btn-primary me-2"> Admins</button>
+            <button id="CreateAdmin" class="btn btn-secondary">Add new Admin</button>
+        </div>
+
+        <!-- Admin Login Form -->
+        <div id="adminData" class="mt-4" style="display: none;">
+            @if (Model != null && Model.Any())
+            {
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Admin Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var admin in Model)
+                        {
+                            <tr>
+                                <td>@admin.Id</td>
+                                <td>@admin.AdminName</td>
+                                <td>@admin.Email</td>
+                                <td>@admin.Password</td>
+                                <td>
+                                    <form asp-controller="Home" asp-action="EditAdmin" asp-route-id="@admin.Id" method="get">
+                                        <button type="submit" class="btn btn-warning">Edit</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form asp-controller="Home" asp-action="DeleteAdmin" asp-route-id="@admin.Id" method="post" onsubmit="return confirm('Are you sure you want to delete this admin?');">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No admins found.</p>
+            }
+        </div>
+
+        <div id="createAdmins" class="mt-4" style="display: none;">
+            
+<h1>Create New Admin</h1>
+
+<form asp-controller="Admin" asp-action="Save" method="post" class="needs-validation" novalidate>
+    <div class="form-group mb-3">
+        <label for="id">ID:</label>
+                    <input type="number" class="form-control" id="id" name="id" placeholder="Enter Admin ID" required />
+        <div class="invalid-feedback">
+            Please provide a valid ID.
+        </div>
+        
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Admin Name" required />
+        <div class="invalid-feedback">
+            Please provide a name.
+        </div>
+
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="degree">Email:</label>
+                    <input type="text" class="form-control" id="Email" name="Email" placeholder="Enter Admin Email" required />
+        <div class="invalid-feedback">
+            Please provide an Email.
+        </div>
+    </div>
+                <div class="form-group mb-3">
+                    <label for="degree">Password:</label>
+                    <input type="text" class="form-control" id="Email" name="Email" placeholder="Enter Admin Password" required />
+                    <div class="invalid-feedback">
+                        Please provide a Password.
+                    </div>
+                </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('adminBtn').addEventListener('click', function () {
+            document.getElementById('adminData').style.display = 'block';
+            document.getElementById('createAdmins').style.display = 'none';
+        });
+
+        document.getElementById('CreateAdmin').addEventListener('click', function () {
+            document.getElementById('createAdmins').style.display = 'block';
+            document.getElementById('adminData').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

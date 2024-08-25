@@ -1,0 +1,45 @@
+/* Center the form container */
+/*html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    
+    height: 100vh;
+}*/
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Hide the overflow to prevent scrolling */
+    background-color: #134B70;
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #134B70; /* Background color of the page */
+    margin: 0;
+}
+
+    /* Style the form */
+    .form-container form {
+        background-color: white; /* Background color of the form */
+        border: 1px solid #ccc; /* Border around the form */
+        padding: 20px;
+        border-radius: 8px; /* Optional: Rounded corners */
+        width: 100%;
+        max-width: 500px; /* Adjust the max-width as needed */
+    }
+
+    /* Center form elements */
+    .form-container h1 {
+        text-align: center;
+    }
+
+    .form-container .form-group {
+        margin-bottom: 15px;
+    }
+    footer{
+        display:none;
+    }

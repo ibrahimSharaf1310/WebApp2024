@@ -1,0 +1,44 @@
+﻿@model List<WebApp.Models.PayingDetail>
+
+<div class="container mt-5">
+    <h1>User_Meter Reading</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th> ID</th>
+                <th> UserName</th>
+                <th> MeterNumber</th>
+                <th>Reading Date</th>
+                <th>Meter Reading</th>
+                <th>Bill Amount</th>
+               @*  <th>Pay</th> *@
+                <th>DeleteReading</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.UserId</td>
+                    <td>@item.UserName</td>
+                    <td>@item.MeterNumber</td>
+                    <td>@item.ReadingDate.ToShortDateString()</td>
+                    <td>@item.MeterReading</td>
+                    <td>@item.BillAmount</td>
+                   @*  <td>  <a href="@Url.Action("PayNow", "Home")" class="btn btn-success">Pay Now</a></td> *@
+                    <td>
+                        <form asp-action="DeleteReading" asp-controller="Home" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@item.UserId" />
+                            <button type="submit" class="btn btn-danger">Delete Reading</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @*  <div class="mt-4">
+    <a href="@Url.Action("PayNow", "Home")" class="btn btn-success">Pay Now</a>
+    </div> *@
+</div>

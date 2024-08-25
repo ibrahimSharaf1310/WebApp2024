@@ -1,0 +1,103 @@
+﻿@model WebApp.Models.User
+<style>
+    footer{
+        display:none;
+    }
+
+    html, body {
+        height: 100%;
+        margin: 0;
+        overflow: hidden; /* Hide the overflow to prevent scrolling */
+        background-color: #134B70;
+    }
+    h1{
+        color:white;
+        font-size:20px;
+        margin-top: -10px;
+    }
+
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #134B70; /* Background color of the page */
+        margin: 0;
+    }
+
+        /* Style the form */
+        .form-container form {
+            margin-top:-100px;
+            background-color: white; /* Background color of the form */
+            border: 1px solid #ccc; /* Border around the form */
+            padding: 20px;
+            border-radius: 8px; /* Optional: Rounded corners */
+            width: 100%;
+            max-width: 500px; /* Adjust the max-width as needed */
+        }
+</style>
+<div class="container">
+    <h1 class="text-center">Create New User</h1>
+    <div class="form-container">
+        <form asp-action="CreateUser" method="post" class="needs-validation" novalidate>
+            <div class="form-group mb-3">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter User Name" required />
+                <div class="invalid-feedback">
+                    Please provide a name.
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="nationalid">National ID:</label>
+                <input type="number" class="form-control" id="nationalid" name="nationalid" placeholder="Enter National ID" required />
+                <div class="invalid-feedback">
+                    Please provide a National ID.
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="address">Address:</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Enter User Address" required />
+                <div class="invalid-feedback">
+                    Please provide an Address.
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="meternumbr">Meter Number:</label>
+                <input type="text" class="form-control" id="meternumbr" name="meternumbr" placeholder="Enter User Meter Number" required />
+                <div class="invalid-feedback">
+                    Please provide a Meter Number.
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter User Password" required />
+                <div class="invalid-feedback">
+                    Please provide a Password.
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="adminid">Admin ID:</label>
+                <input type="text" class="form-control" id="adminid" name="adminid" placeholder="Enter Admin ID" required />
+                <div class="invalid-feedback">
+                    Please provide an Admin ID.
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="role">Role:</label>
+                <input type="text" class="form-control" id="role" name="role" placeholder="Enter Role" required />
+                <div class="invalid-feedback">
+                    Please provide a Role.
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
